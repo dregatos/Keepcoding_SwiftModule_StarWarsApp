@@ -11,6 +11,7 @@
 		0733B2A91B033A510017143D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0733B2A81B033A510017143D /* Images.xcassets */; };
 		0733B2AC1B033A510017143D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0733B2AA1B033A510017143D /* LaunchScreen.xib */; };
 		0733B2B81B033A510017143D /* StarWarsSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2B71B033A510017143D /* StarWarsSwiftTests.swift */; };
+		0733B2C51B033B1A0017143D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2C41B033B1A0017143D /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +33,7 @@
 		0733B2B11B033A510017143D /* StarWarsSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0733B2B61B033A510017143D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0733B2B71B033A510017143D /* StarWarsSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsSwiftTests.swift; sourceTree = "<group>"; };
+		0733B2C41B033B1A0017143D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				0733B2A61B033A510017143D /* AppDelegate.swift */,
 				0733B2A81B033A510017143D /* Images.xcassets */,
 				0733B2AA1B033A510017143D /* LaunchScreen.xib */,
+				0733B2C31B033B000017143D /* Models */,
 				0733B2A41B033A510017143D /* Supporting Files */,
 			);
 			path = StarWarsSwift;
@@ -104,6 +107,14 @@
 				0733B2B61B033A510017143D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0733B2C31B033B000017143D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0733B2C41B033B1A0017143D /* Models.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0733B2A71B033A510017143D /* AppDelegate.swift in Sources */,
+				0733B2C51B033B1A0017143D /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
