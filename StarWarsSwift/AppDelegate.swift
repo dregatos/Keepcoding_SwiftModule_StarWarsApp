@@ -15,10 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // Model
+        let universe = StarWarsUniverse()
+        println(universe.description)
+        
+        // ViewControllers
+        var tableVC = StarWarsUniverseVC(style: .Grouped, model: universe)
+        tableVC.delegate = tableVC
+        var navVC = UINavigationController(rootViewController: tableVC)
+        
+        // Window
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.rootViewController = navVC
+        self.window!.backgroundColor = UIColor.redColor()
         self.window!.makeKeyAndVisible()
+        
         return true
     }
 

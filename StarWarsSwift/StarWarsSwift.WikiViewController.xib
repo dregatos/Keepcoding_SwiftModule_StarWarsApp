@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WikiViewController" customModule="StarWarsSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wikiViewer" destination="edB-7L-IwG" id="Tqy-kS-SJT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edB-7L-IwG">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" red="0.1764705882" green="0.2666666667" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="edB-7L-IwG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Of5-lY-pdB"/>
+                <constraint firstItem="edB-7L-IwG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="R7Q-sV-QbP"/>
+                <constraint firstAttribute="bottom" secondItem="edB-7L-IwG" secondAttribute="bottom" id="gVv-bD-24j"/>
+                <constraint firstAttribute="trailing" secondItem="edB-7L-IwG" secondAttribute="trailing" id="xeS-Po-wYm"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
