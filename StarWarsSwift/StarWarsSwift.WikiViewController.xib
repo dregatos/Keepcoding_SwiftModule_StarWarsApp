@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WikiViewController" customModule="StarWarsSwift" customModuleProvider="target">
             <connections>
+                <outlet property="loadingIndicator" destination="ZRq-Qs-OtY" id="KMY-Lg-LUP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wikiViewer" destination="edB-7L-IwG" id="Tqy-kS-SJT"/>
             </connections>
@@ -19,11 +20,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.1764705882" green="0.2666666667" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZRq-Qs-OtY">
+                    <rect key="frame" x="282" y="281" width="37" height="37"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ZRq-Qs-OtY" firstAttribute="centerY" secondItem="edB-7L-IwG" secondAttribute="centerY" id="Mbx-4u-hX3"/>
                 <constraint firstItem="edB-7L-IwG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Of5-lY-pdB"/>
                 <constraint firstItem="edB-7L-IwG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="R7Q-sV-QbP"/>
+                <constraint firstItem="ZRq-Qs-OtY" firstAttribute="centerX" secondItem="edB-7L-IwG" secondAttribute="centerX" id="XOQ-24-wIO"/>
                 <constraint firstAttribute="bottom" secondItem="edB-7L-IwG" secondAttribute="bottom" id="gVv-bD-24j"/>
                 <constraint firstAttribute="trailing" secondItem="edB-7L-IwG" secondAttribute="trailing" id="xeS-Po-wYm"/>
             </constraints>

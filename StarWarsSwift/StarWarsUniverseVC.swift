@@ -1,4 +1,4 @@
-//
+    //
 //  StarWarsUniverseVC.swift
 //  StartWarsSwift
 //
@@ -26,9 +26,9 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
     let cellIdentifier = "Cell"
     
     // MARK: variables ***
-    var model : StarWarsUniverse?
+    var universe : StarWarsUniverse?
     var delegate:StarWarsUniverseViewControllerDelegate! = nil
-    
+
     // MARK: Lifecycle ***
     
     override init(style: UITableViewStyle) {
@@ -41,9 +41,9 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(style: UITableViewStyle, model: StarWarsUniverse) {
+    convenience init(style: UITableViewStyle, universe: StarWarsUniverse) {
         self.init(style: style)
-        self.model = model
+        self.universe = universe
     }
     
     required init!(coder aDecoder: NSCoder!) {
@@ -70,8 +70,8 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let model = self.model {
-            return model.number(ofCharactersWithType: starWarsCharacterType(forSection: section))
+        if let universe = self.universe {
+            return universe.number(ofCharactersWithType: starWarsCharacterType(forSection: section))
         } else {
             return 0
         }
@@ -111,14 +111,21 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let var character = starWarsCharacter(atIndexPath: indexPath) {
+        if let var selected = starWarsCharacter(atIndexPath: indexPath) {
             
             // Call our delegate
-            delegate?.starWarsUniverseVC(self, didSelectCharacter: character)
+            delegate?.starWarsUniverseVC(self, didSelectCharacter: selected)
             
             // Send notification
-            let notKey = GlobalConstants.NotificationKey.CHARACTER_DID_SELECT
-            NSNotificationCenter.defaultCenter().postNotificationName(notKey, object: self)
+            let notKey = GlobalConstants.NotificationName.CHARACTER_DID_SELECT
+            let dic = [GlobalConstants.NotificationKey.CHARACTER : selected]
+            NSNotificationCenter.defaultCenter().postNotificationName(notKey, object: self, userInfo:dic)
+            
+            // Save last selected character
+            var coords: Array<Int> = [indexPath.section,indexPath.row]
+            var def = NSUserDefaults.standardUserDefaults()
+            def.setObject(coords, forKey: GlobalConstants.Keys.LAST_SELECTED_CHARACTER)
+            def.synchronize()
         }
     }
     
@@ -137,7 +144,7 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
     
     func starWarsCharacter(atIndexPath indexPath: NSIndexPath) -> StarWarsCharacter? {
         let type = starWarsCharacterType(forSection: indexPath.section)
-        let character = self.model?.character(ofType: type, atIndex: indexPath.row)
+        let character = self.universe?.character(ofType: type, atIndex: indexPath.row)
         return character
     }
     

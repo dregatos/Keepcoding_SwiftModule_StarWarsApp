@@ -9,7 +9,13 @@
 import Foundation
 
 struct GlobalConstants {
-    struct NotificationKey {
+    struct Keys {
+    static let LAST_SELECTED_CHARACTER = "lastSelectedCharacterKey"
+    }
+    struct NotificationName {
         static let CHARACTER_DID_SELECT = "characterDidSelectNotification"
+    }
+    struct NotificationKey {
+        static let CHARACTER = "characterKey"
     }
 }

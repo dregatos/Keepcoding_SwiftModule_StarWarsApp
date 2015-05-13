@@ -20,15 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let universe = StarWarsUniverse()
         println(universe.description)
         
-        // ViewControllers
-        var tableVC = StarWarsUniverseVC(style: .Grouped, model: universe)
-        tableVC.delegate = tableVC
-        var navVC = UINavigationController(rootViewController: tableVC)
-        
+        var rootVC : UIViewController?
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+            rootVC = configureForPad(forModel: universe)
+        } else {
+            rootVC = configureForPhone(forModel: universe)
+        }
+
         // Window
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window!.rootViewController = navVC
-        self.window!.backgroundColor = UIColor.redColor()
+        self.window!.rootViewController = rootVC!
+        self.window!.backgroundColor = UIColor.clearColor()
         self.window!.makeKeyAndVisible()
         
         return true
@@ -55,7 +57,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    
+    // MARK: Helpers
+    
+    func configureForPad(forModel model: StarWarsUniverse) -> UIViewController {
+        // ViewControllers
+        var tableVC = StarWarsUniverseVC(style: .Grouped, universe: model)
+        var leftNavVC = UINavigationController(rootViewController: tableVC)
+        
+        var selectedCharacter = lastSelectedCharacter(inStarWarsUniverseVC: tableVC)
+        var characterVC = CharacterViewController(character: selectedCharacter)
+        var rightNavVC = UINavigationController(rootViewController: characterVC)
+        
+        // UISplitVC
+        var splitVC = UISplitViewController()
+        splitVC.viewControllers = [leftNavVC,rightNavVC]
+        
+        // delegates
+        tableVC.delegate = characterVC
+        
+        return splitVC
+    }
+    
+    func configureForPhone(forModel model: StarWarsUniverse) -> UIViewController {
+        // ViewControllers
+        var tableVC = StarWarsUniverseVC(style: .Grouped, universe: model)
+        var navVC = UINavigationController(rootViewController: tableVC)
+    
+        // delegates
+        tableVC.delegate = tableVC
+        
+        return navVC
+    }
+    
 
+    func lastSelectedCharacter(inStarWarsUniverseVC universeVC: StarWarsUniverseVC) -> StarWarsCharacter {
+        
+        var def = NSUserDefaults.standardUserDefaults()
+        var coords: Array<Int> = [0,0] // default
+        if let storedCoord = def.objectForKey(GlobalConstants.Keys.LAST_SELECTED_CHARACTER) as AnyObject? as! NSArray? {
+            coords = storedCoord as! Array<Int>
+        }
+        
+        var indexPath = NSIndexPath(forRow: coords[1], inSection: coords[0])
+        var character = universeVC.starWarsCharacter(atIndexPath: indexPath)
+
+        if let selected = character {
+            return selected
+        } else {
+            return universeVC.universe!.imperials[0]
+        }
+    }
 
 }
 

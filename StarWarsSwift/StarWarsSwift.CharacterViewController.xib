@@ -35,7 +35,7 @@
                         </barButtonItem>
                     </items>
                 </toolbar>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOu-g2-C8A">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOu-g2-C8A">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                 </imageView>
             </subviews>

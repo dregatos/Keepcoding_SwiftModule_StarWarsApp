@@ -7,16 +7,16 @@
 //
 
 import UIKit
+import AVFoundation
 
-class CharacterViewController: UIViewController {
+class CharacterViewController: UIViewController, StarWarsUniverseViewControllerDelegate {
     
     // MARK: Variables ***
     var character : StarWarsCharacter?
-    
+    var audioPlayer = AVAudioPlayer()
+
     @IBOutlet weak var photoImView: UIImageView!
     @IBOutlet weak var toolbar: UIToolbar!
-    
-    
     
     // MARK: Lifecycle ***
     
@@ -39,12 +39,14 @@ class CharacterViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let notKey = GlobalConstants.NotificationKey.CHARACTER_DID_SELECT
-        let nc: NSNotificationCenter = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "characterDidChange", name: notKey, object: nil)
-        
-        self.view.backgroundColor = UIColor.grayColor()
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.view.backgroundColor = UIColor.blackColor()
         self.photoImView.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        // show displayModeButton of UISplitVC
+        // NOTE: it's not neccessary to implement UISplitViewControllerDelegate in Swift
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        navigationItem.leftItemsSupplementBackButton = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,17 +68,31 @@ class CharacterViewController: UIViewController {
     
     @IBAction func playBtnPressed(sender: AnyObject) {
         
+        if let character = self.character {
+            var error:NSError?
+            audioPlayer = AVAudioPlayer(data: self.character?.sound, error: &error)
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        }
     }
     
     @IBAction func wikiBtnPressed(sender: AnyObject) {
         
         if let character = self.character {
-            let vc = WikiViewController()
+            let vc = WikiViewController(character: character)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    // MARK: StarWarsUniverseViewControllerDelegate ***
     
+    func starWarsUniverseVC(swuvc: StarWarsUniverseVC, didSelectCharacter: StarWarsCharacter) {
+        println("Character did selected -> \(didSelectCharacter.name)")
+        
+        self.character = didSelectCharacter
+        
+        syncViewWithModel()
+    }
     
     
     
