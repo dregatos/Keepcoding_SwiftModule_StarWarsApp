@@ -9,11 +9,32 @@
 import UIKit
 import AVFoundation
 
-class CharacterViewController: UIViewController, StarWarsUniverseViewControllerDelegate {
+class CharacterViewController: UIViewController, StarWarsUniverseViewControllerDelegate, AVAudioPlayerDelegate {
     
     // MARK: Variables ***
     var character : StarWarsCharacter?
     var audioPlayer = AVAudioPlayer()
+    
+    var playBtn: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self, action: "playBtnPressed:")
+        }
+    }
+    var stopBtn: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "playBtnPressed:")
+        }
+    }
+    var wikiBtn: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(title: "Wiki", style: UIBarButtonItemStyle.Plain, target: self, action: "wikiBtnPressed:")
+        }
+    }
+    var flexibleItem: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        }
+    }
 
     @IBOutlet weak var photoImView: UIImageView!
     @IBOutlet weak var toolbar: UIToolbar!
@@ -58,9 +79,18 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
         
         if let character = self.character {
             self.title = character.name
+            
             if let image = character.photo {
                 self.photoImView.image = image
             }
+            
+            self.toolbar.setItems([self.playBtn,self.flexibleItem,wikiBtn], animated: true)
+            
+            var error:NSError?
+            audioPlayer = AVAudioPlayer(data: character.sound, error: &error)
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            
         }
     }
     
@@ -69,16 +99,24 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
     @IBAction func playBtnPressed(sender: AnyObject) {
         
         if let character = self.character {
-            var error:NSError?
-            audioPlayer = AVAudioPlayer(data: self.character?.sound, error: &error)
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
+            if audioPlayer.playing == false {
+                audioPlayer.play()
+                self.toolbar.setItems([self.stopBtn,self.flexibleItem,wikiBtn], animated: true)
+
+            } else {
+                audioPlayer.stop()
+                audioPlayer.currentTime = 0
+                self.toolbar.setItems([self.playBtn,self.flexibleItem,wikiBtn], animated: true)
+
+            }
         }
     }
     
     @IBAction func wikiBtnPressed(sender: AnyObject) {
         
         if let character = self.character {
+            self.audioPlayer.stop()
+
             let vc = WikiViewController(character: character)
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -90,13 +128,15 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
         println("Character did selected -> \(didSelectCharacter.name)")
         
         self.character = didSelectCharacter
+        self.audioPlayer.stop()
         
         syncViewWithModel()
     }
     
     
+    // MARK: AVAudioPlayerDelegate ***
     
-    
-    
-    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        self.toolbar.setItems([self.playBtn,self.flexibleItem,wikiBtn], animated: true)
+    }
 }

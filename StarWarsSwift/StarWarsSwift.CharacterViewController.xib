@@ -21,19 +21,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="fGt-1X-jp6"/>
                     </constraints>
-                    <items>
-                        <barButtonItem systemItem="play" id="GWH-ZT-mis">
-                            <connections>
-                                <action selector="playBtnPressed:" destination="-1" id="RE0-dS-bJ4"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="yYn-uz-3nx"/>
-                        <barButtonItem title="Wiki" id="icP-kt-FWa" userLabel="Wiki">
-                            <connections>
-                                <action selector="wikiBtnPressed:" destination="-1" id="BbH-lj-Sbk"/>
-                            </connections>
-                        </barButtonItem>
-                    </items>
+                    <items/>
                 </toolbar>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOu-g2-C8A">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
