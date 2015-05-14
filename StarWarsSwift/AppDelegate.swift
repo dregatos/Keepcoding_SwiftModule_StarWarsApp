@@ -97,8 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var def = NSUserDefaults.standardUserDefaults()
         var coords: Array<Int> = [0,0] // default
-        if let storedCoord = def.objectForKey(GlobalConstants.Keys.LAST_SELECTED_CHARACTER) as AnyObject? as! NSArray? {
-            coords = storedCoord as! Array<Int>
+        if let storedCoord = def.objectForKey(GlobalConstants.Keys.LAST_SELECTED_CHARACTER) as? Array<Int> {
+            coords = storedCoord
         }
         
         var indexPath = NSIndexPath(forRow: coords[1], inSection: coords[0])
