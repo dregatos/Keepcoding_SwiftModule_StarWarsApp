@@ -102,9 +102,9 @@ class WikiViewController: UIViewController, UIWebViewDelegate {
     }
     
     func showLoadingErrorAlert() {
-        let titleM = "Loading failed"
-        let messageM = "Do you want to try again?"
-        let alertController = UIAlertController(title: titleM, message: messageM, preferredStyle: .Alert)
+        let titleAlert = "Loading failed"
+        let messageAlert = "Do you want to try again?"
+        let alertController = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
             // ...

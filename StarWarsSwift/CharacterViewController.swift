@@ -13,7 +13,7 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
     
     // MARK: Variables ***
     var character : StarWarsCharacter?
-    var audioPlayer = AVAudioPlayer()
+    lazy var audioPlayer = AVAudioPlayer()
     
     var playBtn: UIBarButtonItem {
         get {
@@ -68,6 +68,9 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
         // NOTE: it's not neccessary to implement UISplitViewControllerDelegate in Swift
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
         navigationItem.leftItemsSupplementBackButton = true
+        
+        // UIToolbar
+        self.toolbar.setItems([self.playBtn,self.flexibleItem,wikiBtn], animated: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -84,13 +87,10 @@ class CharacterViewController: UIViewController, StarWarsUniverseViewControllerD
                 self.photoImView.image = image
             }
             
-            self.toolbar.setItems([self.playBtn,self.flexibleItem,wikiBtn], animated: true)
-            
             var error:NSError?
             audioPlayer = AVAudioPlayer(data: character.sound, error: &error)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
-            
         }
     }
     

@@ -11,7 +11,7 @@
 		0733B2A91B033A510017143D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0733B2A81B033A510017143D /* Images.xcassets */; };
 		0733B2AC1B033A510017143D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0733B2AA1B033A510017143D /* LaunchScreen.xib */; };
 		0733B2B81B033A510017143D /* StarWarsSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2B71B033A510017143D /* StarWarsSwiftTests.swift */; };
-		0733B2C51B033B1A0017143D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2C41B033B1A0017143D /* Models.swift */; };
+		0733B2C51B033B1A0017143D /* DummyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2C41B033B1A0017143D /* DummyDataLoader.swift */; };
 		0733B2C81B033BCE0017143D /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2C71B033BCE0017143D /* GlobalConstants.swift */; };
 		0733B2F81B033FFE0017143D /* StarWarsUniverseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2F71B033FFE0017143D /* StarWarsUniverseVC.swift */; };
 		0733B2FB1B03403E0017143D /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733B2F91B03403E0017143D /* CharacterViewController.swift */; };
@@ -32,6 +32,8 @@
 		0733B31B1B03412A0017143D /* vader.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0733B30D1B03412A0017143D /* vader.caf */; };
 		0733B31C1B03412A0017143D /* yoda.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0733B30E1B03412A0017143D /* yoda.caf */; };
 		0733B31D1B03412A0017143D /* yoda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0733B30F1B03412A0017143D /* yoda.jpg */; };
+		078E9A551B5028600015553A /* StarWarsCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E9A541B5028600015553A /* StarWarsCharacter.swift */; };
+		078E9A571B5028F10015553A /* StarWarsUniverse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078E9A561B5028F10015553A /* StarWarsUniverse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +55,7 @@
 		0733B2B11B033A510017143D /* StarWarsSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarWarsSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0733B2B61B033A510017143D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0733B2B71B033A510017143D /* StarWarsSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsSwiftTests.swift; sourceTree = "<group>"; };
-		0733B2C41B033B1A0017143D /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0733B2C41B033B1A0017143D /* DummyDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyDataLoader.swift; sourceTree = "<group>"; };
 		0733B2C71B033BCE0017143D /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		0733B2F71B033FFE0017143D /* StarWarsUniverseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsUniverseVC.swift; sourceTree = "<group>"; };
 		0733B2F91B03403E0017143D /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,8 @@
 		0733B30D1B03412A0017143D /* vader.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = vader.caf; sourceTree = "<group>"; };
 		0733B30E1B03412A0017143D /* yoda.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = yoda.caf; sourceTree = "<group>"; };
 		0733B30F1B03412A0017143D /* yoda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yoda.jpg; sourceTree = "<group>"; };
+		078E9A541B5028600015553A /* StarWarsCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsCharacter.swift; sourceTree = "<group>"; };
+		078E9A561B5028F10015553A /* StarWarsUniverse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsUniverse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +158,9 @@
 		0733B2C31B033B000017143D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0733B2C41B033B1A0017143D /* Models.swift */,
+				0733B2C41B033B1A0017143D /* DummyDataLoader.swift */,
+				078E9A541B5028600015553A /* StarWarsCharacter.swift */,
+				078E9A561B5028F10015553A /* StarWarsUniverse.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -311,9 +317,11 @@
 				0733B2F81B033FFE0017143D /* StarWarsUniverseVC.swift in Sources */,
 				0733B2FB1B03403E0017143D /* CharacterViewController.swift in Sources */,
 				0733B2A71B033A510017143D /* AppDelegate.swift in Sources */,
+				078E9A571B5028F10015553A /* StarWarsUniverse.swift in Sources */,
 				0733B2C81B033BCE0017143D /* GlobalConstants.swift in Sources */,
+				078E9A551B5028600015553A /* StarWarsCharacter.swift in Sources */,
 				0733B2FF1B0340650017143D /* WikiViewController.swift in Sources */,
-				0733B2C51B033B1A0017143D /* Models.swift in Sources */,
+				0733B2C51B033B1A0017143D /* DummyDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

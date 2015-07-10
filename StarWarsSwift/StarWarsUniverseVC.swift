@@ -117,15 +117,15 @@ class StarWarsUniverseVC: UITableViewController, StarWarsUniverseViewControllerD
             delegate?.starWarsUniverseVC(self, didSelectCharacter: selected)
             
             // Send notification
-            let notKey = GlobalConstants.NotificationName.CHARACTER_DID_SELECT
-            let dic = [GlobalConstants.NotificationKey.CHARACTER : selected]
-            NSNotificationCenter.defaultCenter().postNotificationName(notKey, object: self, userInfo:dic)
+            let notificationKey = GlobalConstants.NotificationName.CHARACTER_DID_SELECT
+            let userinfo = [GlobalConstants.NotificationKey.CHARACTER : selected]
+            NSNotificationCenter.defaultCenter().postNotificationName(notificationKey, object: self, userInfo:userinfo)
             
             // Save last selected character
             var coords: Array<Int> = [indexPath.section,indexPath.row]
-            var def = NSUserDefaults.standardUserDefaults()
-            def.setObject(coords, forKey: GlobalConstants.Keys.LAST_SELECTED_CHARACTER)
-            def.synchronize()
+            var userDefault = NSUserDefaults.standardUserDefaults()
+            userDefault.setObject(coords, forKey: GlobalConstants.Keys.LAST_SELECTED_CHARACTER)
+            userDefault.synchronize()
         }
     }
     
